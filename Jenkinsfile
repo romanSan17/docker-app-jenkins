@@ -3,12 +3,12 @@ pipeline {
     stages {
         stage('Create Image') {
             steps {
-                sh 'hello'
+                sh 'docker build . -t hello-app'
             }
         }
-        stage('Test') {
+        stage('Create a container') {
             steps {
-                echo 'Testing...'
+                sh 'docker run -p 4000:3000 -d hello-app'
             }
         }
     }
